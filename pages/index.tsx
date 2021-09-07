@@ -1,21 +1,119 @@
+import React, { useState, useEffect } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Axios from "axios";
+import { TableRow, TableCell, TableBody, TableContainer, TableHead, Table, Paper } from "@material-ui/core";
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const drawerWidth = 240;
+
+const useStyles = makeStyles((theme) => ({
+  table: {
+    minWidth: 650,
+  },
+  root: {
+    display: 'flex',
+    flexGrow: 1,
+  },
+  appBar: {
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+  },
+  appBarShift: {
+    width: `calc(100% - ${drawerWidth}px)`,
+    marginLeft: drawerWidth,
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  hide: {
+    display: 'none',
+  },
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+  },
+  drawerPaper: {
+    width: drawerWidth,
+  },
+  drawerHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    padding: theme.spacing(0, 1),
+    // necessary for content to be below app bar
+    ...theme.mixins.toolbar,
+    justifyContent: 'flex-end',
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    marginLeft: -drawerWidth,
+  },
+  contentShift: {
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    marginLeft: 0,
+  },
+  title: {
+    flexGrow: 1,
+  },
+}));
+
 
 const Home: NextPage = () => {
+  const [rows, setRows] = useState<any | undefined>([]);
+  // const [reload, setReload] = useState(true)
+
   const fetch = () => {
+    const dataBox: any[] = [];
     Axios.get("https://schedule.hololive.tv/api/list")
       .then((response) => {
-        let data = response.data;
-        console.log(data.dateGroupList[0].videoList);
-        return data.dateGroupList[0].videoList;
+        let data = response.data.dateGroupList[0].videoList;
+        console.log(data.length);
+        console.log(data[0]);
+        for (let i = 0; i < data.length; i++) {
+          console.log(data[i].name);
+          console.log(data[i].talent.iconImageUrl);
+          console.log(data[i].title);
+          console.log(data[i].thumbtail);
+          console.log(data[i].url);
+          console.log(data[i].isLive);
+
+          dataBox.push({
+            name: data[i].name,
+            icon: data[i].talent.iconImageUrl,
+            title: data[i].title,
+            thumbnail: data[i].thumbtail,
+            streamUrl: data[i].url,
+            isLive: data[i].isLive,
+          });
+        }
+        setRows(dataBox)
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
+  useEffect(() => {
+    fetch()
+  }, [])
+  const classes = useStyles();
 
   return (
     <div className={styles.container}>
@@ -28,6 +126,40 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <h1>Root</h1>
         <button onClick={() => fetch()}>fetch</button>
+        <TableContainer component={Paper} >
+        <Table className={classes.table} aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell>名前</TableCell>
+              <TableCell align="right">学籍番号</TableCell>
+              <TableCell align="right">出欠</TableCell>
+              <TableCell align="right">欠席/公欠理由</TableCell>
+            </TableRow>
+          </TableHead>
+        <TableBody>
+          {rows.map((row: any, index: number) => (
+            <TableRow key={index}>
+              <img src={row.icon} width={48} height={48} />
+              <TableCell component="th" scope="row">
+                {row.name}
+              </TableCell>
+              {/* <TableCell align="right"> */}
+              {/* </TableCell> */}
+              <TableCell align="right">{row.title}</TableCell>
+              <TableCell align="right">{row.thumbnail}</TableCell>
+              <TableCell align="right">{row.streamUrl}</TableCell>
+              <TableCell align="right">{row.isLive}</TableCell>
+              {/* icon: data[i].talent.iconImageUrl,
+            title: data[i].title,
+            thumbnail: data[i].thumbtail,
+            streamUrl: data[i].url,
+            isLive: data[i].isLive, */}
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+      </TableContainer>
+
       </main>
 
       <footer className={styles.footer}>
