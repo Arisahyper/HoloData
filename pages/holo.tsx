@@ -37,7 +37,7 @@ const Home: NextPage = () => {
     const dataBox: any[] = [];
     Axios.get("https://schedule.hololive.tv/api/list/7")
       .then((response) => {
-        let dateGroup: number = response.data.dateGroupList.length - 1
+        let dateGroup: number = response.data.dateGroupList.length - 1;
         for (let i = dateGroup; i >= 0; i--) {
           let data = response.data.dateGroupList[i].videoList;
           console.log(data.length);
@@ -79,7 +79,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
+      <main className={styles.main} style={{ backgroundColor: "#fff" }}>
         <h1>HoloTube</h1>
         {/* <button onClick={() => fetch()}>fetch</button> */}
 

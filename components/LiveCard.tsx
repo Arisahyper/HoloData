@@ -47,11 +47,9 @@ const LiveCard = (props: Props) => {
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
         avatar={<Avatar src={props.iconLink} />}
-        // ハンバーガー >> いらんかも
         action={
-          <IconButton aria-label="settings">
-            {/* あとでやる */}
-            {props.isLive ? <YouTubeIcon color="primary" /> : <YouTubeIcon />}
+          <IconButton aria-label="onLive">
+            {props.isLive ? <YouTubeIcon sx={{color: "#e7261c"}}  /> : <YouTubeIcon />}
           </IconButton>
         }
         title={props.name}
@@ -66,7 +64,7 @@ const LiveCard = (props: Props) => {
       />
       <CardContent>
         {/* TODO: 動画説明 */}
-        <Typography variant="body2" color="text.secondary">
+        <Typography variant="body2" color="text.primary">
           {props.title}
         </Typography>
       </CardContent>
