@@ -14,6 +14,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import YouTubeIcon from '@mui/icons-material/YouTube';
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -31,40 +32,37 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
 }));
 
 type Props = {
-  name: string
-  iconLink: string
-  title: string
-  thumbnailLink: string
-  date: string
-}
+  name: string;
+  iconLink: string;
+  title: string;
+  thumbnailLink: string;
+  date: string;
+  isLive: boolean;
+};
 
 const LiveCard = (props: Props) => {
-  const [expanded, setExpanded] = React.useState(false);
+  // const [expanded, setExpanded] = React.useState(false);
 
   return (
     <Card sx={{ maxWidth: 345 }}>
-      {/* TODO: アイコン */}
       <CardHeader
-        avatar={<Avatar sx={{ bgcolor: red[500] }} src={ props.iconLink } />}
+        avatar={<Avatar src={props.iconLink} />}
         // ハンバーガー >> いらんかも
         action={
           <IconButton aria-label="settings">
-            <MoreVertIcon />
+            {/* あとでやる */}
+            { props.isLive ? <YouTubeIcon color="primary" /> : <YouTubeIcon /> }
           </IconButton>
         }
-        // TODO: 動画タイトル
-        title={ props.name }
-        // TODO: 日付 時間
-        subheader={ props.date }
+        title={props.name}
+        subheader={props.date}
       />
       {/* サムネ */}
       <CardMedia
         component="img"
-        height="194"
-        // TODO: サムネリンク
-        image={ props.thumbnailLink }
-        // TODO: タイトル入れればOK
-        alt={ props.title }
+        width="486"
+        image={props.thumbnailLink}
+        alt={props.title}
       />
       <CardContent>
         {/* TODO: 動画説明 */}

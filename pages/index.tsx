@@ -133,14 +133,6 @@ const Home: NextPage = () => {
         <button onClick={() => fetch()}>fetch</button>
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="simple table">
-            {/* <TableHead>
-            <TableRow>
-              <TableCell>名前</TableCell>
-              <TableCell align="right">学籍番号</TableCell>
-              <TableCell align="right">出欠</TableCell>
-              <TableCell align="right">欠席/公欠理由</TableCell>
-            </TableRow>
-          </TableHead> */}
             <TableBody>
               {rows.map((row: any, index: number) => (
                 <TableRow key={index}>
