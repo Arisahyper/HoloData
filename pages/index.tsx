@@ -105,7 +105,7 @@ const Home: NextPage = () => {
                           iconLink={icon}
                           title={title}
                           thumbnailLink={thumbnail}
-                          date={date}
+                          date={date.split(':')[0]  + ":" + date.split(':')[1]}
                           isLive={isLive}
                         />
                       </div>
