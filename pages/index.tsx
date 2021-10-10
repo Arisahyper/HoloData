@@ -4,22 +4,29 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import Axios from "axios";
-import { TableRow, TableCell, TableBody, TableContainer, TableHead, Table, Paper } from "@material-ui/core";
-import { makeStyles } from '@material-ui/core/styles';
+import {
+  TableRow,
+  TableCell,
+  TableBody,
+  TableContainer,
+  TableHead,
+  Table,
+  Paper,
+} from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
-
-const drawerWidth = 240;
+const drawerWidth = 1000;
 
 const useStyles = makeStyles((theme) => ({
   table: {
     minWidth: 650,
   },
   root: {
-    display: 'flex',
+    display: "flex",
     flexGrow: 1,
   },
   appBar: {
-    transition: theme.transitions.create(['margin', 'width'], {
+    transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
@@ -27,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   appBarShift: {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
+    transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
@@ -36,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   hide: {
-    display: 'none',
+    display: "none",
   },
   drawer: {
     width: drawerWidth,
@@ -46,24 +53,24 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
   },
   drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
     padding: theme.spacing(0, 1),
     // necessary for content to be below app bar
     ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
+    justifyContent: "flex-end",
   },
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
+    transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
     marginLeft: -drawerWidth,
   },
   contentShift: {
-    transition: theme.transitions.create('margin', {
+    transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
@@ -74,14 +81,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 const Home: NextPage = () => {
   const [rows, setRows] = useState<any | undefined>([]);
-  // const [reload, setReload] = useState(true)
 
   const fetch = () => {
     const dataBox: any[] = [];
-    Axios.get("https://schedule.hololive.tv/api/list")
+    Axios.get("https://schedule.hololive.tv/api/list/7")
       .then((response) => {
         let data = response.data.dateGroupList[0].videoList;
         console.log(data.length);
@@ -103,7 +108,7 @@ const Home: NextPage = () => {
             isLive: data[i].isLive,
           });
         }
-        setRows(dataBox)
+        setRows(dataBox);
       })
       .catch((error) => {
         console.log(error);
@@ -111,8 +116,8 @@ const Home: NextPage = () => {
   };
 
   useEffect(() => {
-    fetch()
-  }, [])
+    fetch();
+  }, []);
   const classes = useStyles();
 
   return (
@@ -126,40 +131,42 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <h1>Root</h1>
         <button onClick={() => fetch()}>fetch</button>
-        <TableContainer component={Paper} >
-        <Table className={classes.table} aria-label="simple table">
-          <TableHead>
+        <TableContainer component={Paper}>
+          <Table className={classes.table} aria-label="simple table">
+            {/* <TableHead>
             <TableRow>
               <TableCell>名前</TableCell>
               <TableCell align="right">学籍番号</TableCell>
               <TableCell align="right">出欠</TableCell>
               <TableCell align="right">欠席/公欠理由</TableCell>
             </TableRow>
-          </TableHead>
-        <TableBody>
-          {rows.map((row: any, index: number) => (
-            <TableRow key={index}>
-              <img src={row.icon} width={48} height={48} />
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              {/* <TableCell align="right"> */}
-              {/* </TableCell> */}
-              <TableCell align="right">{row.title}</TableCell>
-              <TableCell align="right">{row.thumbnail}</TableCell>
-              <TableCell align="right">{row.streamUrl}</TableCell>
-              <TableCell align="right">{row.isLive}</TableCell>
-              {/* icon: data[i].talent.iconImageUrl,
+          </TableHead> */}
+            <TableBody>
+              {rows.map((row: any, index: number) => (
+                <TableRow key={index}>
+                  <Image
+                    src={row.icon}
+                    alt="アイコン"
+                    width="100rem"
+                    height="100rem"
+                  />
+                  <TableCell component="th" scope="row">
+                    {row.name}
+                  </TableCell>
+                  <TableCell align="right">{row.title}</TableCell>
+                  <TableCell align="right">{row.thumbnail}</TableCell>
+                  <TableCell align="right">{row.streamUrl}</TableCell>
+                  <TableCell align="right">{row.isLive}</TableCell>
+                  {/* icon: data[i].talent.iconImageUrl,
             title: data[i].title,
             thumbnail: data[i].thumbtail,
             streamUrl: data[i].url,
             isLive: data[i].isLive, */}
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-      </TableContainer>
-
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
       </main>
 
       <footer className={styles.footer}>
