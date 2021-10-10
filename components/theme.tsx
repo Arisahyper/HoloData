@@ -9,6 +9,7 @@ const theme = createTheme({
     secondary: {
       main: "#E7261C",
     },
+    mode: "dark",
   },
 });
 
