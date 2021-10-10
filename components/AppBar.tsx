@@ -15,7 +15,7 @@ export default function SearchAppBar({ fetch, liveFetch }: any) {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
         <Toolbar variant="dense">
-          <Typography variant="h6" color="inherit" component="div">
+          <Typography variant="h6" color="#333" component="div">
             HoloTube
           </Typography>
         </Toolbar>
