@@ -140,6 +140,7 @@
 }
 
 .overlay {
+  padding-top: 3rem;
   position: fixed;
   z-index: 2;
   transition: 0.3s linear;

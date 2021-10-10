@@ -4,23 +4,23 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Axios from "axios";
 import Link from "next/link";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 
 import Card from "../components/LiveCard";
 
-import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 
 import Footer from "../components/Footer";
 import SearchAppBar from "../components/AppBar";
 
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
+// const Item = styled(Paper)(({ theme }) => ({
+//   ...theme.typography.body2,
+//   padding: theme.spacing(1),
+//   textAlign: "center",
+//   color: theme.palette.text.secondary,
+// }));
 
 type Props = {
   name: string;
@@ -45,6 +45,34 @@ const Home: NextPage = () => {
     } else {
       return false;
     }
+  };
+
+  const fetch = () => {
+    const dataBox: any[] = [];
+    Axios.get("https://schedule.hololive.tv/api/list/7")
+      .then((response) => {
+        let dateGroup: number = response.data.dateGroupList.length - 1;
+        for (let i = dateGroup; i >= 0; i--) {
+          let data = response.data.dateGroupList[i].videoList;
+          for (let j = 0; j < data.length; j++) {
+            if (data[j].platformType === 1) {
+              dataBox.push({
+                name: data[j].name,
+                icon: data[j].talent.iconImageUrl,
+                title: data[j].title,
+                date: data[j].datetime,
+                thumbnail: data[j].thumbnail,
+                streamUrl: data[j].url,
+                isLive: data[j].isLive,
+              });
+            }
+          }
+        }
+        setRows(dataBox);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   const afterFetch = () => {
@@ -105,34 +133,6 @@ const Home: NextPage = () => {
       });
   };
 
-  const fetch = () => {
-    const dataBox: any[] = [];
-    Axios.get("https://schedule.hololive.tv/api/list/7")
-      .then((response) => {
-        let dateGroup: number = response.data.dateGroupList.length - 1;
-        for (let i = dateGroup; i >= 0; i--) {
-          let data = response.data.dateGroupList[i].videoList;
-          for (let j = 0; j < data.length; j++) {
-            if (data[j].platformType === 1) {
-              dataBox.push({
-                name: data[j].name,
-                icon: data[j].talent.iconImageUrl,
-                title: data[j].title,
-                date: data[j].datetime,
-                thumbnail: data[j].thumbnail,
-                streamUrl: data[j].url,
-                isLive: data[j].isLive,
-              });
-            }
-          }
-        }
-        setRows(dataBox);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   useEffect(() => {
     fetch();
   }, []);
@@ -145,31 +145,38 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <SearchAppBar />
+      <div style={{ paddingBottom: "4rem" }}>
+        <SearchAppBar />
+      </div>
       <main className={styles.main} style={{ backgroundColor: "#fff" }}>
-        <h1>HoloTube</h1>
-        <button
-          onClick={() => {
-            fetch();
-          }}
-        >
-          全ての動画
-        </button>
-        <button
-          onClick={() => {
-            liveFetch();
-          }}
-        >
-          ライブ中のみ
-        </button>
-        <button
-          onClick={() => {
-            afterFetch();
-          }}
-        >
-          ライブ中、配信予定
-        </button>
-
+        <div style={{ padding: "3rem 0 3rem 0" }}>
+          <Stack direction="row" spacing={2}>
+            <Button
+              variant="outlined"
+              onClick={() => {
+                fetch();
+              }}
+            >
+              全ての動画
+            </Button>
+            <Button
+              variant="outlined"
+              onClick={() => {
+                afterFetch();
+              }}
+            >
+              配信中 & 配信予定
+            </Button>
+            <Button
+              variant="outlined"
+              onClick={() => {
+                liveFetch();
+              }}
+            >
+              配信中のみ
+            </Button>
+          </Stack>
+        </div>
         <Box sx={{ width: "80%" }} style={{ paddingBottom: "4rem" }}>
           <Grid
             container
