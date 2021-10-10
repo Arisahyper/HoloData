@@ -10,24 +10,24 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
-          <meta name="description" content="ホロライブの配信情報閲覧サイト" />
-          <meta property="og:title" content="HoloTube" />
+          <meta name="description" content="ホロライブの情報閲覧サイト" />
+          <meta property="og:title" content="HoloData" />
           <meta
             property="og:description"
-            content="ホロライブの配信情報閲覧サイト"
+            content="ホロライブの情報閲覧サイト"
           />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://holo-tube.vercel.app/" />
           <meta property="og:image" content="" />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="HoloTube" />
+          <meta name="twitter:title" content="HoloData" />
           <meta
             name="twitter:description"
-            content="ホロライブの配信情報閲覧サイト"
+            content="ホロライブの情報閲覧サイト"
           />
           <meta
             name="twitter:image"
-            content="public/images/PortfolioPage.png"
+            content=""
           />
           <meta name="twitter:site" content="@arisahyper" />
           <meta name="twitter:creator" content="@arisahyper" />
