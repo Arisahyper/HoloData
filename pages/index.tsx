@@ -150,7 +150,7 @@ const Home: NextPage = () => {
       </div>
       <main className={styles.main} style={{ backgroundColor: "#fff" }}>
         <div style={{ padding: "3rem 0 3rem 0" }}>
-          <Stack direction="row" spacing={2}>
+          <Stack direction="row" spacing={1}>
             <Button
               variant="outlined"
               onClick={() => {
@@ -165,7 +165,7 @@ const Home: NextPage = () => {
                 afterFetch();
               }}
             >
-              配信中 & 配信予定
+              配信中 / 予定
             </Button>
             <Button
               variant="outlined"
