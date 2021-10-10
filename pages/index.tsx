@@ -12,6 +12,8 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 
+import Footer from "../components/Footer";
+
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
   padding: theme.spacing(1),
@@ -75,7 +77,7 @@ const Home: NextPage = () => {
       <main className={styles.main} style={{ backgroundColor: "#fff" }}>
         <h1>HoloTube</h1>
 
-        <Box sx={{ width: "80%" }}>
+        <Box sx={{ width: "80%" }} style={{ paddingBottom: "4rem" }}>
           <Grid
             container
             rowSpacing={1}
@@ -94,7 +96,7 @@ const Home: NextPage = () => {
                 }: Props,
                 index: number
               ) => (
-                <Grid item xs={12} sm={6} md={3} key={index}>
+                <Grid item xs={12} sm={6} md={3} key={index} style={{padding: " 0.5rem"}}>
                   <Link href={streamUrl}>
                     <a style={{ textDecoration: "none" }}>
                       <div className={styles.card}>
@@ -114,27 +116,8 @@ const Home: NextPage = () => {
             )}
           </Grid>
         </Box>
-
-        {/* <Grid container className={styles.GridContainer}>
-          {rows.map((row: any, index: number) => (
-            <div key={index}>
-              <Grid item xs={12} sm={6}>
-                <Link href={row.streamUrl}>
-                  <a style={{ textDecoration: "none" }}>
-                    <Card
-                      name={row.name}
-                      iconLink={row.icon}
-                      title={row.title}
-                      thumbnailLink={row.thumbnail}
-                      date={row.date}
-                    />
-                  </a>
-                </Link>
-              </Grid>
-            </div>
-          ))}
-        </Grid> */}
       </main>
+      <Footer/>
     </div>
   );
 };
