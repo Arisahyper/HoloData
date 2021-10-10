@@ -14,6 +14,7 @@ import Box from "@mui/material/Box";
 
 import Footer from "../components/Footer";
 import SearchAppBar from "../components/AppBar";
+import DemoSideBar from "../components/DemoSideBar";
 
 // const Item = styled(Paper)(({ theme }) => ({
 //   ...theme.typography.body2,
@@ -145,9 +146,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div style={{ paddingBottom: "4rem" }}>
-        <SearchAppBar />
-      </div>
+        <DemoSideBar />
       <main className={styles.main} style={{ backgroundColor: "#fff" }}>
         <div style={{ padding: "3rem 0 3rem 0" }}>
           <Stack direction="row" spacing={1}>

@@ -8,29 +8,26 @@ import MenuIcon from "@mui/icons-material/Menu";
 import SideSlide from "./SideSlide";
 import styles from "../styles/Home.module.css";
 
-export default function SearchAppBar({ fetch, liveFetch }: any) {
+export default function SearchAppBar() {
   const [sideOpen, setSideOpen] = useState<boolean>(false);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
         <Toolbar variant="dense">
-          <Typography variant="h6" color="#333" component="div">
+          <IconButton
+            edge="start"
+            color="secondary"
+            aria-label="menu"
+            sx={{ mr: 2 }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" color="#fff" component="div">
             HoloTube
           </Typography>
         </Toolbar>
       </AppBar>
-      {sideOpen ? (
-        <div className={styles.overlay}>
-          <SideSlide
-            fetch={fetch}
-            liveFetch={liveFetch}
-            // afterFech ={afterFetch()}
-          />
-        </div>
-      ) : (
-        <></>
-      )}
     </Box>
   );
 }

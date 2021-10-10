@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
-import SearchAppBar from "../components/AppBar"
-import Footer from "../components/Footer"
+import SearchAppBar from "../components/AppBar";
+import DemoSideBar from "../components/DemoSideBar";
+import Footer from "../components/Footer";
 
 let isLoadwidgets = false;
 const Twitter = () => {
@@ -15,21 +16,17 @@ const Twitter = () => {
 
   return (
     <>
-      <div style={{ paddingBottom: "4rem" }}>
-        <SearchAppBar />
+        <DemoSideBar />
+      <div style={{ textAlign: "center" }}>
+        <a
+          className="twitter-timeline"
+          data-width="80vh"
+          data-height="100vh"
+          data-theme="light"
+          data-chrome="noheadernofooternoborders"
+          href="https://twitter.com/hololivetv/lists/list6?ref_src=twsrc%5Etfw"
+        ></a>
       </div>
-    <div style={{textAlign: "center"}}>
-      <a
-        className="twitter-timeline"
-        data-width="80vh"
-        data-height="100vh"
-        data-theme="light"
-        data-chrome="noheadernofooternoborders"
-        href="https://twitter.com/hololivetv/lists/list6?ref_src=twsrc%5Etfw"
-        >
-        A Twitter List by Nr_Narumium
-      </a>
-    </div>
     </>
   );
 };
