@@ -21,14 +21,14 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 type Props = {
-  name: string
-  title: string
-  icon: string
-  streamUrl: string
-  thumbnail: string
-  date: string
+  name: string;
+  title: string;
+  icon: string;
+  streamUrl: string;
+  thumbnail: string;
+  date: string;
   isLive: boolean;
-}
+};
 
 const Home: NextPage = () => {
   const [rows, setRows] = useState<any | undefined>([]);
@@ -37,26 +37,28 @@ const Home: NextPage = () => {
     const dataBox: any[] = [];
     Axios.get("https://schedule.hololive.tv/api/list/7")
       .then((response) => {
-        let data = response.data.dateGroupList[0].videoList;
-        console.log(data.length);
-        console.log(data[0]);
-        for (let i = 0; i < data.length; i++) {
-          console.log(data[i].name);
-          console.log(data[i].talent.iconImageUrl);
-          console.log(data[i].title);
-          console.log(data[i].thumbtail);
-          console.log(data[i].url);
-          console.log(data[i].isLive);
-
-          dataBox.push({
-            name: data[i].name,
-            icon: data[i].talent.iconImageUrl,
-            title: data[i].title,
-            date: data[i].datetime,
-            thumbnail: data[i].thumbnail,
-            streamUrl: data[i].url,
-            isLive: data[i].isLive,
-          });
+        let dateGroup: number = response.data.dateGroupList.length - 1
+        for (let i = dateGroup; i >= 0; i--) {
+          let data = response.data.dateGroupList[i].videoList;
+          console.log(data.length);
+          console.log(data[0]);
+          for (let j = 0; j < data.length; j++) {
+            // console.log(data[j].name);
+            // console.log(data[j].talent.iconImageUrl);
+            // console.log(data[j].title);
+            // console.log(data[j].thumbtail);
+            // console.log(data[j].url);
+            // console.log(data[j].isLive);
+            dataBox.push({
+              name: data[j].name,
+              icon: data[j].talent.iconImageUrl,
+              title: data[j].title,
+              date: data[j].datetime,
+              thumbnail: data[j].thumbnail,
+              streamUrl: data[j].url,
+              isLive: data[j].isLive,
+            });
+          }
         }
         setRows(dataBox);
       })
@@ -86,26 +88,38 @@ const Home: NextPage = () => {
             container
             rowSpacing={1}
             columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-            >
-          {rows.map(({ name, title, icon, streamUrl, thumbnail, date, isLive } :Props, index: number) => (
-            <Grid item xs={12} sm={6} md={3} key={index}>
-                <Link href={streamUrl}>
-                  <a style={{ textDecoration: "none" }}>
-                    <div className={styles.card}>
-
-                    <Card
-                      name={name}
-                      iconLink={icon}
-                      title={title}
-                      thumbnailLink={thumbnail}
-                      date={date}
-                      isLive={isLive}
-                      />
+          >
+            {rows.map(
+              (
+                {
+                  name,
+                  title,
+                  icon,
+                  streamUrl,
+                  thumbnail,
+                  date,
+                  isLive,
+                }: Props,
+                index: number
+              ) => (
+                <Grid item xs={12} sm={6} md={3} key={index}>
+                  <Link href={streamUrl}>
+                    <a style={{ textDecoration: "none" }}>
+                      <div className={styles.card}>
+                        <Card
+                          name={name}
+                          iconLink={icon}
+                          title={title}
+                          thumbnailLink={thumbnail}
+                          date={date}
+                          isLive={isLive}
+                        />
                       </div>
-                  </a>
-                </Link>
-              </Grid>
-          ))}
+                    </a>
+                  </Link>
+                </Grid>
+              )
+            )}
           </Grid>
         </Box>
 

@@ -14,7 +14,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-import YouTubeIcon from '@mui/icons-material/YouTube';
+import YouTubeIcon from "@mui/icons-material/YouTube";
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -51,7 +51,7 @@ const LiveCard = (props: Props) => {
         action={
           <IconButton aria-label="settings">
             {/* あとでやる */}
-            { props.isLive ? <YouTubeIcon color="primary" /> : <YouTubeIcon /> }
+            {props.isLive ? <YouTubeIcon color="primary" /> : <YouTubeIcon />}
           </IconButton>
         }
         title={props.name}
