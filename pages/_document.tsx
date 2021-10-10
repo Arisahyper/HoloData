@@ -25,10 +25,7 @@ export default class MyDocument extends Document {
             name="twitter:description"
             content="ホロライブの情報閲覧サイト"
           />
-          <meta
-            name="twitter:image"
-            content=""
-          />
+          <meta name="twitter:image" content="" />
           <meta name="twitter:site" content="@arisahyper" />
           <meta name="twitter:creator" content="@arisahyper" />
         </Head>

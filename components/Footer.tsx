@@ -6,7 +6,7 @@ const Footer = () => {
       style={{
         background: "#fff",
         width: "100%",
-        height: "12vh",
+        height: "10vh",
         display: "table",
         textAlign: "center",
         boxShadow: "0 -0.2px 1px #212121",
