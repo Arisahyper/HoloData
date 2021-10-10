@@ -141,8 +141,8 @@ const Home: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>HoloTube</title>
-        <meta name="description" content="ホロライブの配信情報閲覧サイト" />
+        <title>HoloData</title>
+        <meta name="description" content="ホロライブの情報閲覧サイト" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
