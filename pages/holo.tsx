@@ -40,24 +40,18 @@ const Home: NextPage = () => {
         let dateGroup: number = response.data.dateGroupList.length - 1;
         for (let i = dateGroup; i >= 0; i--) {
           let data = response.data.dateGroupList[i].videoList;
-          console.log(data.length);
-          console.log(data[0]);
           for (let j = 0; j < data.length; j++) {
-            // console.log(data[j].name);
-            // console.log(data[j].talent.iconImageUrl);
-            // console.log(data[j].title);
-            // console.log(data[j].thumbtail);
-            // console.log(data[j].url);
-            // console.log(data[j].isLive);
-            dataBox.push({
-              name: data[j].name,
-              icon: data[j].talent.iconImageUrl,
-              title: data[j].title,
-              date: data[j].datetime,
-              thumbnail: data[j].thumbnail,
-              streamUrl: data[j].url,
-              isLive: data[j].isLive,
-            });
+            if(data[j].platformType === 1){
+              dataBox.push({
+                name: data[j].name,
+                icon: data[j].talent.iconImageUrl,
+                title: data[j].title,
+                date: data[j].datetime,
+                thumbnail: data[j].thumbnail,
+                streamUrl: data[j].url,
+                isLive: data[j].isLive,
+              });
+            }
           }
         }
         setRows(dataBox);
