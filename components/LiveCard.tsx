@@ -25,7 +25,7 @@ type Props = {
 const LiveCard = (props: Props) => {
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 380 }}>
       <CardHeader
         avatar={<Avatar src={props.iconLink} />}
         action={
