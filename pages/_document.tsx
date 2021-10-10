@@ -1,5 +1,5 @@
-import React from 'react';
-import Document, { Html, Head, Main, NextScript } from 'next/document';
+import React from "react";
+import Document, { Html, Head, Main, NextScript } from "next/document";
 
 export default class MyDocument extends Document {
   render() {
@@ -12,16 +12,19 @@ export default class MyDocument extends Document {
           />
           <meta name="description" content="ホロライブの配信情報閲覧サイト" />
           <meta property="og:title" content="HoloTube" />
-          <meta property="og:description" content="ホロライブの配信情報閲覧サイト" />
+          <meta
+            property="og:description"
+            content="ホロライブの配信情報閲覧サイト"
+          />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://holo-tube.vercel.app/" />
-          <meta
-            property="og:image"
-            content=""
-          />
+          <meta property="og:image" content="" />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:title" content="HoloTube" />
-          <meta name="twitter:description" content="ホロライブの配信情報閲覧サイト" />
+          <meta
+            name="twitter:description"
+            content="ホロライブの配信情報閲覧サイト"
+          />
           <meta
             name="twitter:image"
             content="public/images/PortfolioPage.png"

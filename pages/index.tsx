@@ -38,14 +38,14 @@ const Home: NextPage = () => {
 
   const DateComparison = (date: any) => {
     let nowDate: Date = new Date();
-    let parceDate = Date.parse(date)
+    let parceDate = Date.parse(date);
 
-    if(parceDate > nowDate.getTime()){
-      return true
+    if (parceDate > nowDate.getTime()) {
+      return true;
     } else {
-      return false
+      return false;
     }
-  }
+  };
 
   const afterFetch = () => {
     const dataBox: any[] = [];
@@ -55,18 +55,18 @@ const Home: NextPage = () => {
         for (let i = dateGroup; i >= 0; i--) {
           let data = response.data.dateGroupList[i].videoList;
           for (let j = 0; j < data.length; j++) {
-            if(data[j].platformType === 1){
-            if(DateComparison(data[j].datetime) || data[j].isLive){
-              dataBox.push({
-                name: data[j].name,
-                icon: data[j].talent.iconImageUrl,
-                title: data[j].title,
-                date: data[j].datetime,
-                thumbnail: data[j].thumbnail,
-                streamUrl: data[j].url,
-                isLive: data[j].isLive,
-              });
-            }
+            if (data[j].platformType === 1) {
+              if (DateComparison(data[j].datetime) || data[j].isLive) {
+                dataBox.push({
+                  name: data[j].name,
+                  icon: data[j].talent.iconImageUrl,
+                  title: data[j].title,
+                  date: data[j].datetime,
+                  thumbnail: data[j].thumbnail,
+                  streamUrl: data[j].url,
+                  isLive: data[j].isLive,
+                });
+              }
             }
           }
         }
@@ -75,7 +75,7 @@ const Home: NextPage = () => {
       .catch((error) => {
         console.log(error);
       });
-  }
+  };
 
   const liveFetch = () => {
     const dataBox: any[] = [];
@@ -85,7 +85,7 @@ const Home: NextPage = () => {
         for (let i = dateGroup; i >= 0; i--) {
           let data = response.data.dateGroupList[i].videoList;
           for (let j = 0; j < data.length; j++) {
-            if(data[j].platformType === 1 && data[j].isLive){
+            if (data[j].platformType === 1 && data[j].isLive) {
               dataBox.push({
                 name: data[j].name,
                 icon: data[j].talent.iconImageUrl,
@@ -103,7 +103,7 @@ const Home: NextPage = () => {
       .catch((error) => {
         console.log(error);
       });
-  }
+  };
 
   const fetch = () => {
     const dataBox: any[] = [];
@@ -113,7 +113,7 @@ const Home: NextPage = () => {
         for (let i = dateGroup; i >= 0; i--) {
           let data = response.data.dateGroupList[i].videoList;
           for (let j = 0; j < data.length; j++) {
-            if(data[j].platformType === 1){
+            if (data[j].platformType === 1) {
               dataBox.push({
                 name: data[j].name,
                 icon: data[j].talent.iconImageUrl,
@@ -145,12 +145,30 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <SearchAppBar/>
+      <SearchAppBar />
       <main className={styles.main} style={{ backgroundColor: "#fff" }}>
         <h1>HoloTube</h1>
-        <button onClick={() => {fetch()}}>全ての動画</button>
-        <button onClick={() => {liveFetch()}}>ライブ中のみ</button>
-        <button onClick={() => {afterFetch()}}>ライブ中、配信予定</button>
+        <button
+          onClick={() => {
+            fetch();
+          }}
+        >
+          全ての動画
+        </button>
+        <button
+          onClick={() => {
+            liveFetch();
+          }}
+        >
+          ライブ中のみ
+        </button>
+        <button
+          onClick={() => {
+            afterFetch();
+          }}
+        >
+          ライブ中、配信予定
+        </button>
 
         <Box sx={{ width: "80%" }} style={{ paddingBottom: "4rem" }}>
           <Grid
@@ -171,7 +189,14 @@ const Home: NextPage = () => {
                 }: Props,
                 index: number
               ) => (
-                <Grid item xs={12} sm={6} md={3} key={index} style={{padding: " 0.5rem"}}>
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  md={3}
+                  key={index}
+                  style={{ padding: " 0.5rem" }}
+                >
                   <Link href={streamUrl}>
                     <a style={{ textDecoration: "none" }}>
                       <div className={styles.card}>
@@ -180,7 +205,7 @@ const Home: NextPage = () => {
                           iconLink={icon}
                           title={title}
                           thumbnailLink={thumbnail}
-                          date={date.split(':')[0]  + ":" + date.split(':')[1]}
+                          date={date.split(":")[0] + ":" + date.split(":")[1]}
                           isLive={isLive}
                         />
                       </div>
@@ -192,7 +217,7 @@ const Home: NextPage = () => {
           </Grid>
         </Box>
       </main>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

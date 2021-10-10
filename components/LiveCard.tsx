@@ -23,14 +23,17 @@ type Props = {
 };
 
 const LiveCard = (props: Props) => {
-
   return (
     <Card sx={{ maxWidth: 380 }}>
       <CardHeader
         avatar={<Avatar src={props.iconLink} />}
         action={
           <IconButton aria-label="onLive">
-            {props.isLive ? <YouTubeIcon sx={{color: "#e7261c"}}  /> : <YouTubeIcon />}
+            {props.isLive ? (
+              <YouTubeIcon sx={{ color: "#e7261c" }} />
+            ) : (
+              <YouTubeIcon />
+            )}
           </IconButton>
         }
         title={props.name}

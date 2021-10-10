@@ -41,7 +41,7 @@ const Home: NextPage = () => {
         for (let i = dateGroup; i >= 0; i--) {
           let data = response.data.dateGroupList[i].videoList;
           for (let j = 0; j < data.length; j++) {
-            if(data[j].platformType === 1){
+            if (data[j].platformType === 1) {
               dataBox.push({
                 name: data[j].name,
                 icon: data[j].talent.iconImageUrl,
