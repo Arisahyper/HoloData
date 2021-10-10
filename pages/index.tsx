@@ -13,6 +13,7 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 
 import Footer from "../components/Footer";
+import SearchAppBar from "../components/AppBar";
 
 const Item = styled(Paper)(({ theme }) => ({
   ...theme.typography.body2,
@@ -33,6 +34,76 @@ type Props = {
 
 const Home: NextPage = () => {
   const [rows, setRows] = useState<any | undefined>([]);
+  const [date, setDate] = useState<string>("");
+
+  const DateComparison = (date: any) => {
+    let nowDate: Date = new Date();
+    let parceDate = Date.parse(date)
+
+    if(parceDate > nowDate.getTime()){
+      return true
+    } else {
+      return false
+    }
+  }
+
+  const afterFetch = () => {
+    const dataBox: any[] = [];
+    Axios.get("https://schedule.hololive.tv/api/list/7")
+      .then((response) => {
+        let dateGroup: number = response.data.dateGroupList.length - 1;
+        for (let i = dateGroup; i >= 0; i--) {
+          let data = response.data.dateGroupList[i].videoList;
+          for (let j = 0; j < data.length; j++) {
+            if(data[j].platformType === 1){
+            if(DateComparison(data[j].datetime) || data[j].isLive){
+              dataBox.push({
+                name: data[j].name,
+                icon: data[j].talent.iconImageUrl,
+                title: data[j].title,
+                date: data[j].datetime,
+                thumbnail: data[j].thumbnail,
+                streamUrl: data[j].url,
+                isLive: data[j].isLive,
+              });
+            }
+            }
+          }
+        }
+        setRows(dataBox);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  const liveFetch = () => {
+    const dataBox: any[] = [];
+    Axios.get("https://schedule.hololive.tv/api/list/7")
+      .then((response) => {
+        let dateGroup: number = response.data.dateGroupList.length - 1;
+        for (let i = dateGroup; i >= 0; i--) {
+          let data = response.data.dateGroupList[i].videoList;
+          for (let j = 0; j < data.length; j++) {
+            if(data[j].platformType === 1 && data[j].isLive){
+              dataBox.push({
+                name: data[j].name,
+                icon: data[j].talent.iconImageUrl,
+                title: data[j].title,
+                date: data[j].datetime,
+                thumbnail: data[j].thumbnail,
+                streamUrl: data[j].url,
+                isLive: data[j].isLive,
+              });
+            }
+          }
+        }
+        setRows(dataBox);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   const fetch = () => {
     const dataBox: any[] = [];
@@ -74,8 +145,12 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <SearchAppBar/>
       <main className={styles.main} style={{ backgroundColor: "#fff" }}>
         <h1>HoloTube</h1>
+        <button onClick={() => {fetch()}}>全ての動画</button>
+        <button onClick={() => {liveFetch()}}>ライブ中のみ</button>
+        <button onClick={() => {afterFetch()}}>ライブ中、配信予定</button>
 
         <Box sx={{ width: "80%" }} style={{ paddingBottom: "4rem" }}>
           <Grid
