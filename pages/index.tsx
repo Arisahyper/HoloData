@@ -146,9 +146,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-        <DemoSideBar />
+      <DemoSideBar />
       <main className={styles.main} style={{ backgroundColor: "#fff" }}>
-        <div style={{ padding: "3rem 0 3rem 0" }}>
+        <div style={{ padding: "1.25rem 0 3rem 0" }}>
           <Stack direction="row" spacing={1}>
             <Button
               variant="outlined"

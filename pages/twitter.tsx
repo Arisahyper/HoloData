@@ -16,7 +16,7 @@ const Twitter = () => {
 
   return (
     <>
-        <DemoSideBar />
+      <DemoSideBar />
       <div style={{ textAlign: "center" }}>
         <a
           className="twitter-timeline"
@@ -26,6 +26,7 @@ const Twitter = () => {
           data-chrome="noheadernofooternoborders"
           href="https://twitter.com/hololivetv/lists/list6?ref_src=twsrc%5Etfw"
         ></a>
+        <Footer />
       </div>
     </>
   );
