@@ -1,3 +1,4 @@
+import { positions } from "@mui/system";
 import React, { useEffect } from "react";
 import SearchAppBar from "../components/AppBar";
 import DemoSideBar from "../components/DemoSideBar";
@@ -16,6 +17,7 @@ const Twitter = () => {
 
   return (
     <>
+    <div style={{height: "100vh", position: "relative", bottom:"3rem"}}>
       <DemoSideBar />
       <div style={{ textAlign: "center" }}>
         <a
@@ -25,9 +27,10 @@ const Twitter = () => {
           data-theme="light"
           data-chrome="noheadernofooternoborders"
           href="https://twitter.com/hololivetv/lists/list6?ref_src=twsrc%5Etfw"
-        ></a>
+          ></a>
         <Footer />
       </div>
+          </div>
     </>
   );
 };
