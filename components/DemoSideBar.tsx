@@ -31,7 +31,7 @@ const DataList = [
     icon: <YouTubeIcon />,
   },
   {
-    name: "Holoter (β)",
+    name: "Holotter (β)",
     link: "/twitter",
     icon: <TwitterIcon />,
   },
