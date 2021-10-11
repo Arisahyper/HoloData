@@ -10,11 +10,11 @@ export default class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
           />
-          <meta name="description" content="ホロライブの情報閲覧サイト" />
+          <meta name="description" content="ホロライブの総合情報閲覧サイト" />
           <meta property="og:title" content="HoloData" />
           <meta
             property="og:description"
-            content="ホロライブの情報閲覧サイト"
+            content="ホロライブの総合情報閲覧サイト"
           />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://holo-tube.vercel.app/" />
