@@ -24,10 +24,9 @@ const Twitter = () => {
             className="twitter-timeline"
             data-width="80vh"
             data-height="97vh"
-            // data-theme="dark"
             data-theme="light"
             data-chrome="noheadernofooternoborders"
-            href="https://twitter.com/hololivetv/lists/list6?ref_src=twsrc%5Etfw"
+            href="https://twitter.com/hololivetv/lists/list3?ref_src=twsrc%5Etfw"
           />
           <div style={{ width:"100%", position:"fixed", bottom: 0 }}>
             <Footer />

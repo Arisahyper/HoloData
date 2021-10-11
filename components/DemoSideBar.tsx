@@ -26,12 +26,12 @@ import Link from "next/link";
 const drawerWidth = 240;
 const DataList = [
   {
-    name: "HoloTube (β)",
+    name: "Holotube (β)",
     link: "/",
     icon: <YouTubeIcon />,
   },
   {
-    name: "HoloTwitter (β)",
+    name: "Holoter (β)",
     link: "/twitter",
     icon: <TwitterIcon />,
   },
