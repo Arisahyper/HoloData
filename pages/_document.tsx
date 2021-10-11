@@ -23,7 +23,7 @@ export default class MyDocument extends Document {
           <meta name="twitter:title" content="HoloData" />
           <meta
             name="twitter:description"
-            content="ホロライブの情報閲覧サイト"
+            content="ホロライブの総合情報閲覧サイト"
           />
           <meta name="twitter:image" content="https://media.discordapp.net/attachments/807948416147390545/897056504094535710/holodata.png?width=1220&height=686" />
           <meta name="twitter:site" content="@arisahyper" />
