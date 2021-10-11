@@ -26,7 +26,7 @@ import Link from "next/link";
 const drawerWidth = 240;
 const DataList = [
   {
-    name: "Holotube (β)",
+    name: "Holotube",
     link: "/",
     icon: <YouTubeIcon />,
   },
@@ -37,7 +37,7 @@ const DataList = [
   },
   {
     name: "GitHub",
-    link: "https://github.com/Arisahyper/HoloTube",
+    link: "https://github.com/Arisahyper/HoloData",
     icon: <GitHubIcon />,
   },
 ];
