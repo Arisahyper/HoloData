@@ -16,12 +16,6 @@ import Footer from "../components/Footer";
 import SearchAppBar from "../components/AppBar";
 import DemoSideBar from "../components/DemoSideBar";
 
-// const Item = styled(Paper)(({ theme }) => ({
-//   ...theme.typography.body2,
-//   padding: theme.spacing(1),
-//   textAlign: "center",
-//   color: theme.palette.text.secondary,
-// }));
 
 type Props = {
   name: string;
@@ -201,7 +195,7 @@ const Home: NextPage = () => {
                   style={{ padding: " 0.5rem" }}
                 >
                   <Link href={streamUrl}>
-                    <a style={{ textDecoration: "none" }}>
+                    <a target="_blank" style={{ textDecoration: "none" }}>
                       <div className={styles.card}>
                         <Card
                           name={name}
