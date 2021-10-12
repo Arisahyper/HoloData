@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import SearchAppBar from "../components/AppBar";
 import DemoSideBar from "../components/DemoSideBar";
 import Footer from "../components/Footer";
+import Head from "next/head";
 
 let isLoadwidgets = false;
 const Twitter = () => {
@@ -17,6 +18,9 @@ const Twitter = () => {
 
   return (
     <>
+      <Head>
+        <title>HoloData</title>
+      </Head>
       <div style={{ height: "100%" }}>
           <DemoSideBar />
         <div style={{ height:"100vh",textAlign: "center", position: "relative", bottom: "3rem"  }}>

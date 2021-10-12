@@ -29,16 +29,19 @@ const DataList = [
     name: "Holotube",
     link: "/",
     icon: <YouTubeIcon />,
+    blank: "",
   },
   {
     name: "Holotter (β)",
     link: "/twitter",
     icon: <TwitterIcon />,
+    blank: "",
   },
   {
     name: "GitHub",
     link: "https://github.com/Arisahyper/HoloData",
     icon: <GitHubIcon />,
+    blank: "_blank",
   },
 ];
 
@@ -149,10 +152,12 @@ export default function PersistentDrawerLeft() {
           {DataList.map((data, index) => (
             <>
               <Link href={data.link} passHref>
+                <a target={data.blank}>
                 <ListItem button key={index}>
                   <ListItemIcon>{data.icon}</ListItemIcon>
                   <ListItemText primary={data.name} />
                 </ListItem>
+                </a>
               </Link>
             </>
           ))}

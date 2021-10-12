@@ -142,10 +142,7 @@ const Home: NextPage = () => {
     <div>
       <Head>
         <title>HoloData</title>
-        <meta name="description" content="ホロライブの総合情報閲覧サイト" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <DemoSideBar />
       <main className={styles.main} style={{ backgroundColor: "#fff" }}>
         <div style={{ padding: "1.25rem 0 3rem 0" }}>

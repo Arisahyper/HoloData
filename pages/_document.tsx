@@ -6,6 +6,8 @@ export default class MyDocument extends Document {
     return (
       <Html lang="ja">
         <Head>
+          <meta name="description" content="ホロライブの総合情報閲覧サイト" />
+          <link rel="icon" href="/favicon.ico" />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
