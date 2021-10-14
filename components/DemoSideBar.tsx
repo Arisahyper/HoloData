@@ -24,6 +24,7 @@ import ExpandMore from "@material-ui/icons/ExpandMore";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
 import LaptopChromebookIcon from "@mui/icons-material/LaptopChromebook";
+import BurstModeIcon from '@mui/icons-material/BurstMode';
 
 const drawerWidth = 240;
 const DataList = [
@@ -37,6 +38,12 @@ const DataList = [
     name: "Holotter (β)",
     link: "/twitter",
     icon: <TwitterIcon />,
+    blank: "",
+  },
+  {
+    name: "Holowindow (β)",
+    link: "/holowindow",
+    icon: <BurstModeIcon />,
     blank: "",
   },
   {
@@ -103,7 +110,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-export default function PersistentDrawerLeft() {
+export default function DemoteSideBar({ pageTitle }: any ) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [nestOpen, setNestOpen] = React.useState(false);
@@ -135,7 +142,7 @@ export default function PersistentDrawerLeft() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            HoloData
+            {pageTitle}
           </Typography>
         </Toolbar>
       </AppBar>

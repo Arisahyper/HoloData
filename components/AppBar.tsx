@@ -25,8 +25,11 @@ import ExpandLess from "@material-ui/icons/ExpandLess";
 import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
 import LaptopChromebookIcon from "@mui/icons-material/LaptopChromebook";
 
-import Image from "next/image"
-import Axios from "axios"
+import Image from "next/image";
+import Axios from "axios";
+import SvgIcon, { SvgIconProps } from "@material-ui/core/SvgIcon";
+
+type Props = React.HTMLProps<SvgIconProps>;
 
 const drawerWidth = 240;
 const DataList = [
@@ -39,6 +42,12 @@ const DataList = [
   {
     name: "Holotter (β)",
     link: "/twitter",
+    icon: <TwitterIcon />,
+    blank: "",
+  },
+  {
+    name: "Holowindow (β)",
+    link: "/holowindow",
     icon: <TwitterIcon />,
     blank: "",
   },
@@ -90,6 +99,7 @@ const AppBar = styled(MuiAppBar, {
   }),
   ...(open && {
     width: `calc(100% - ${drawerWidth}px)`,
+    // marginLeft: `${drawerWidth}px`,
     marginLeft: `${drawerWidth}px`,
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.easeOut,
@@ -233,15 +243,13 @@ export default function PersistentDrawerLeft() {
         </List>
       </Drawer>
 
-      <Drawer variant="permanent" anchor="right" sx={{ width: "10px" }}>
+      <Drawer variant="permanent" anchor="right">
         <DrawerHeader />
         <Divider />
         <List>
-          {sideList.map(({name, icon}: any, index: number) => (
+          {sideList.map(({ name, icon }: any, index: number) => (
             <ListItem button key={index}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <YouTubeIcon /> : <YouTubeIcon />}
-              </ListItemIcon>
+              <ListItemIcon></ListItemIcon>
               <ListItemText primary={name} />
             </ListItem>
           ))}

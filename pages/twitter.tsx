@@ -20,7 +20,7 @@ const Twitter = () => {
         <title>HoloData</title>
       </Head>
       <div style={{ height: "100%" }}>
-        <DemoSideBar />
+        <DemoSideBar pageTitle="Holotter" />
         <div
           style={{
             height: "100vh",

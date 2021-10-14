@@ -132,7 +132,7 @@ const Home: NextPage = () => {
       <Head>
         <title>HoloData</title>
       </Head>
-      <DemoSideBar />
+      <DemoSideBar pageTitle="Holotube" />
       <main className={styles.main} style={{ backgroundColor: "#fff" }}>
         <div style={{ padding: "1.25rem 0 3rem 0" }}>
           <Stack direction="row" spacing={1}>
