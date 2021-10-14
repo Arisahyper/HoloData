@@ -42,7 +42,7 @@ const DataList = [
   },
   {
     name: "Holowindow (β)",
-    link: "/holowindow",
+    link: "/holotube",
     icon: <BurstModeIcon />,
     blank: "",
   },
