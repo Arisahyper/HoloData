@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
+import styles from "../styles/Home.module.css";
+import Image from "next/image";
+import MiniDrawer from "../components/AppBar";
 
 const Holotube = () => {
-  const url = "https://youtu.be/NQFOlnRtyEk";
-  const url2 = "https://www.youtube.com/embed/UHxBZ7Or-78";
   const [rows, setRows] = useState<any | undefined>([]);
 
   const liveFetch = () => {
@@ -26,6 +27,10 @@ const Holotube = () => {
                 streamUrl: data[j].url,
                 isLive: data[j].isLive,
               });
+              // sideListBox.push({
+              //   name: data[j].name,
+              //   icon: data[j].talent.iconImageUrl,
+              // });
             }
           }
         }
@@ -41,8 +46,8 @@ const Holotube = () => {
   }, []);
 
   return (
-    <div style={{ textAlign: "center" }}>
-      <h1>Root</h1>
+    <div className={styles.main}>
+      <MiniDrawer />
       <Box sx={{ width: "80%" }} style={{ paddingBottom: "4rem" }}>
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           {rows.map((streamUrl: string, i: number) => (
