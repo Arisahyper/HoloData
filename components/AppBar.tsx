@@ -5,8 +5,6 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import MenuIcon from "@mui/icons-material/Menu";
-import SideSlide from "./SideSlide";
-import styles from "../styles/Home.module.css";
 
 export default function SearchAppBar() {
   const [sideOpen, setSideOpen] = useState<boolean>(false);

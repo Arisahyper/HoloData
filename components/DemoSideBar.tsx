@@ -8,6 +8,7 @@ import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
+import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
@@ -15,13 +16,14 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
-
 import GitHubIcon from "@mui/icons-material/GitHub";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import Link from "next/link";
+import ExpandMore from "@material-ui/icons/ExpandMore";
+import ExpandLess from "@material-ui/icons/ExpandLess";
+import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
+import LaptopChromebookIcon from "@mui/icons-material/LaptopChromebook";
 
 const drawerWidth = 240;
 const DataList = [
@@ -41,6 +43,14 @@ const DataList = [
     name: "GitHub",
     link: "https://github.com/Arisahyper/HoloData",
     icon: <GitHubIcon />,
+    blank: "_blank",
+  },
+];
+const relationalDataList = [
+  {
+    name: "非公式Wiki",
+    link: "https://seesaawiki.jp/hololivetv/d/%C1%E1%B8%AB%C9%BD",
+    icon: <LaptopChromebookIcon />,
     blank: "_blank",
   },
 ];
@@ -89,7 +99,6 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
   ...theme.mixins.toolbar,
   justifyContent: "flex-end",
 }));
@@ -97,6 +106,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 export default function PersistentDrawerLeft() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [nestOpen, setNestOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -104,6 +114,10 @@ export default function PersistentDrawerLeft() {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const handleClick = () => {
+    setNestOpen(!nestOpen);
   };
 
   return (
@@ -153,16 +167,38 @@ export default function PersistentDrawerLeft() {
             <>
               <Link href={data.link} passHref>
                 <a target={data.blank}>
-                <ListItem button key={index}>
-                  <ListItemIcon>{data.icon}</ListItemIcon>
-                  <ListItemText primary={data.name} />
-                </ListItem>
+                  <ListItem button key={index}>
+                    <ListItemIcon>{data.icon}</ListItemIcon>
+                    <ListItemText primary={data.name} />
+                  </ListItem>
                 </a>
               </Link>
             </>
           ))}
+          <ListItem button onClick={handleClick}>
+            <ListItemIcon>
+              <QuestionAnswerIcon />
+            </ListItemIcon>
+            <ListItemText primary="外部リンク" />
+            {nestOpen ? <ExpandLess /> : <ExpandMore />}
+          </ListItem>
+          <Collapse in={nestOpen} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              {relationalDataList.map((data, index) => (
+                <div key={index} style={{ paddingLeft: "1.5rem" }}>
+                  <Link href={data.link} passHref>
+                    <a target={data.blank}>
+                      <ListItem button key={index}>
+                        <ListItemIcon>{data.icon}</ListItemIcon>
+                        <ListItemText primary={data.name} />
+                      </ListItem>
+                    </a>
+                  </Link>
+                </div>
+              ))}
+            </List>
+          </Collapse>
         </List>
-        <Divider />
       </Drawer>
       <Main open={open}>
         <DrawerHeader />

@@ -6,16 +6,11 @@ import Axios from "axios";
 import Link from "next/link";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
-
 import Card from "../components/LiveCard";
-
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-
 import Footer from "../components/Footer";
-import SearchAppBar from "../components/AppBar";
 import DemoSideBar from "../components/DemoSideBar";
-
 
 type Props = {
   name: string;

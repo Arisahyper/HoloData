@@ -1,6 +1,4 @@
-import { positions } from "@mui/system";
 import React, { useEffect } from "react";
-import SearchAppBar from "../components/AppBar";
 import DemoSideBar from "../components/DemoSideBar";
 import Footer from "../components/Footer";
 import Head from "next/head";
@@ -22,8 +20,15 @@ const Twitter = () => {
         <title>HoloData</title>
       </Head>
       <div style={{ height: "100%" }}>
-          <DemoSideBar />
-        <div style={{ height:"100vh",textAlign: "center", position: "relative", bottom: "3rem"  }}>
+        <DemoSideBar />
+        <div
+          style={{
+            height: "100vh",
+            textAlign: "center",
+            position: "relative",
+            bottom: "3rem",
+          }}
+        >
           <a
             className="twitter-timeline"
             data-width="80vh"
@@ -32,7 +37,7 @@ const Twitter = () => {
             data-chrome="noheadernofooternoborders"
             href="https://twitter.com/hololivetv/lists/list3?ref_src=twsrc%5Etfw"
           />
-          <div style={{ width:"100%", position:"fixed", bottom: 0 }}>
+          <div style={{ width: "100%", position: "fixed", bottom: 0 }}>
             <Footer />
           </div>
         </div>

@@ -14,4 +14,4 @@
 
 ---
 
-当サイトは[hololive二次的創作ライセンス規約](https://www.hololive.tv/terms)に従い作成しております
+当サイトは[hololive 二次的創作ライセンス規約](https://www.hololive.tv/terms)に従い作成しております
