@@ -33,10 +33,6 @@ const Holotube = () => {
                 streamUrl: data[j].url,
                 isLive: data[j].isLive,
               });
-              // sideListBox.push({
-              //   name: data[j].name,
-              //   icon: data[j].talent.iconImageUrl,
-              // });
             }
           }
         }
