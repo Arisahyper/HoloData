@@ -4,16 +4,14 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import styles from "../styles/Home.module.css";
 import Head from "next/head";
-import Image from "next/image";
-import MiniDrawer from "../components/AppBar";
 import DemoSideBar from "../components/DemoSideBar";
 import Footer from "../components/Footer";
-import { CenterFocusStrong } from "@material-ui/icons";
 import Button from "@mui/material/Button";
-import { elementAcceptingRef } from "@mui/utils";
 
 const Holotube = () => {
   const [rows, setRows] = useState<any | undefined>([]);
+  const [width, setWidth] = useState<string>("480");
+  const [height, setHeight] = useState<string>("270");
 
   const liveFetch = () => {
     const dataBox: any[] = [];
@@ -45,6 +43,14 @@ const Holotube = () => {
 
   useEffect(() => {
     liveFetch();
+    if (window.innerWidth <= 480) {
+      setWidth("344");
+      setHeight("164");
+    }
+
+    // getWindowSize();
+    // console.log(window.innerWidth);
+    // console.log(window.innerHeight);
   }, []);
 
   return (
@@ -55,10 +61,20 @@ const Holotube = () => {
       <main className={styles.main}>
         {/* <MiniDrawer /> */}
         <DemoSideBar pageTitle="Holowindow" />
-          <Button variant="outlined" onClick={() => {liveFetch()}}>
+        <div style={{ paddingTop: "3rem" }}>
+          <Button
+            variant="outlined"
+            onClick={() => {
+              liveFetch();
+            }}
+          >
             更新
           </Button>
-        <Box sx={{ width: "80%" }} style={{ paddingBottom: "4rem", paddingTop: "2rem" }}>
+        </div>
+        <Box
+          sx={{ width: "80%" }}
+          style={{ paddingBottom: "4rem", paddingTop: "2rem" }}
+        >
           <Grid
             container
             rowSpacing={1}
@@ -66,10 +82,14 @@ const Holotube = () => {
           >
             {rows.map((streamUrl: string, i: number) => (
               <div id={`live${i}`} key={i}>
-                <Grid item xs={12} sm={6} md={3} style={{ padding: " 0.5rem" }}>
+                <Grid item xs={12} sm={6} md={3} style={{ padding: "0.5rem" }}>
                   <iframe
-                    width="480"
-                    height="270"
+                    // width="480"
+                    // height="270"
+                    // width="300"
+                    // height="180"
+                    width={width}
+                    height={height}
                     src={
                       "https://www.youtube.com/embed/" +
                       rows[i].streamUrl.split("=")[1]

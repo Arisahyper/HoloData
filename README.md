@@ -18,7 +18,6 @@
 
 試験的に公開しております
 
-
 ---
 
 当サイトは[hololive 二次創作ライセンス規約](https://www.hololive.tv/terms)に従い作成しております

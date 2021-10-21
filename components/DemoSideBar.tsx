@@ -24,7 +24,7 @@ import ExpandMore from "@material-ui/icons/ExpandMore";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import QuestionAnswerIcon from "@material-ui/icons/QuestionAnswer";
 import LaptopChromebookIcon from "@mui/icons-material/LaptopChromebook";
-import BurstModeIcon from '@mui/icons-material/BurstMode';
+import BurstModeIcon from "@mui/icons-material/BurstMode";
 
 const drawerWidth = 240;
 const DataList = [
@@ -66,7 +66,7 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
   open?: boolean;
 }>(({ theme, open }) => ({
   flexGrow: 1,
-  padding: theme.spacing(3),
+  // padding: theme.spacing(3),
   transition: theme.transitions.create("margin", {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -110,7 +110,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-export default function DemoteSideBar({ pageTitle }: any ) {
+export default function DemoteSideBar({ pageTitle }: any) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [nestOpen, setNestOpen] = React.useState(false);

@@ -23,23 +23,23 @@ const Twitter = () => {
         <DemoSideBar pageTitle="Holotter" />
         <div
           style={{
-            height: "100vh",
+            height: "100%",
             textAlign: "center",
-            position: "relative",
-            bottom: "3rem",
+            // position: "relative",
+            // bottom: "3rem",
           }}
         >
           <a
             className="twitter-timeline"
             data-width="80vh"
-            data-height="97vh"
+            data-height="110vh"
             data-theme="light"
             data-chrome="noheadernofooternoborders"
             href="https://twitter.com/hololivetv/lists/list3?ref_src=twsrc%5Etfw"
           />
-          <div style={{ width: "100%", position: "fixed", bottom: 0 }}>
+          {/* <div style={{ width: "100%", position: "fixed", bottom: 0 }}>
             <Footer />
-          </div>
+          </div> */}
         </div>
       </div>
     </>
