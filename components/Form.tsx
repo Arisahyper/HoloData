@@ -1,20 +1,31 @@
+import React from 'react'
 
-
-
-
-export default function Form() {
-  const [list, setList] = useState<[]>([])
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-  };
-
+const Form = () => {
   return (
-    
-  );
+    <div>
+      
+    </div>
+  )
 }
+
+export default Form
+
+
+
+
+// export default function Form() {
+//   const [list, setList] = useState<[]>([])
+//   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+//     event.preventDefault();
+//     const data = new FormData(event.currentTarget);
+//     // eslint-disable-next-line no-console
+//     console.log({
+//       email: data.get("email"),
+//       password: data.get("password"),
+//     });
+//   };
+
+//   return (
+    
+//   );
+// }
