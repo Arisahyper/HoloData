@@ -44,8 +44,8 @@ const Holotube = () => {
   useEffect(() => {
     liveFetch();
     if (window.innerWidth <= 480) {
-      setWidth("344");
-      setHeight("164");
+      setWidth("340");
+      setHeight("191");
     }
 
     // getWindowSize();
