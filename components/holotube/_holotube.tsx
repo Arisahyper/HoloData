@@ -22,7 +22,7 @@ type Props = {
   isLive: boolean;
 };
 
-const Home: NextPage = () => {
+const Holotube: NextPage = () => {
   const [rows, setRows] = useState<any | undefined>([]);
   const [date, setDate] = useState<string>("");
 
@@ -214,4 +214,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default Holotube;
