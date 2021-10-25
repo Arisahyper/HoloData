@@ -1,12 +1,9 @@
-
-
 import React, { useEffect } from "react";
-import DemoSideBar from "../components/DemoSideBar";
-import Footer from "../components/Footer";
+import DemoSideBar from "../DemoSideBar";
 import Head from "next/head";
 
 let isLoadwidgets = false;
-const Twitter = () => {
+const Holotter = () => {
   useEffect(() => {
     if (!isLoadwidgets) {
       const s = document.createElement("script");
@@ -27,8 +24,6 @@ const Twitter = () => {
           style={{
             height: "100%",
             textAlign: "center",
-            // position: "relative",
-            // bottom: "3rem",
           }}
         >
           <a
@@ -39,13 +34,10 @@ const Twitter = () => {
             data-chrome="noheadernofooternoborders"
             href="https://twitter.com/hololivetv/lists/list3?ref_src=twsrc%5Etfw"
           />
-          {/* <div style={{ width: "100%", position: "fixed", bottom: 0 }}>
-            <Footer />
-          </div> */}
         </div>
       </div>
     </>
   );
 };
 
-export default Twitter;
+export default Holotter;
