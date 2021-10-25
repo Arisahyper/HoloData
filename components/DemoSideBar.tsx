@@ -36,13 +36,13 @@ const DataList = [
   },
   {
     name: "Holotter (β)",
-    link: "/twitter",
+    link: "/holotter",
     icon: <TwitterIcon />,
     blank: "",
   },
   {
     name: "Holowindow (β)",
-    link: "/holotube",
+    link: "/holowindow",
     icon: <BurstModeIcon />,
     blank: "",
   },
